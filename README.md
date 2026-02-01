@@ -134,7 +134,7 @@ Stripe Webhook → PAID
 ---
 
 ## 📁 Project Structure
-
+```bash
 ai-lead-engine/
 ├── backend/
 │ ├── app/
@@ -161,116 +161,140 @@ ai-lead-engine/
 │
 └── README.md
 
-
+```
 ---
 
 ## ⚙️ Backend Setup
 
-### 1️⃣ Create Virtual Environment
 ```bash
+ 1️⃣ Create Virtual Environment
 cd backend
 python -m venv venv
 source venv/bin/activate
+
 2️⃣ Install Dependencies
 pip install -r requirements.txt
+
 3️⃣ Environment Variables (.env)
-JWT_SECRET_KEY=your_secret
+# JWT Configuration
+JWT_SECRET_KEY=9e2a933aab96fe66b030c9d6bfc899fb994dd7b1811c94f644e19ff3d41fd91c
 JWT_ALGORITHM=HS256
 JWT_EXPIRE_MINUTES=60
 
+# Email (SMTP)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email
 SMTP_PASSWORD=your_password
 FROM_EMAIL=your_email
 
+# AI
 GEMINI_API_KEY=your_api_key
+
+# Payments
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
+
 4️⃣ Run Backend
 uvicorn app.main:app --reload
 Backend runs at:
 
 http://127.0.0.1:8000
-⚙️ Frontend Setup
+```
+
+## ⚙️ Frontend Setup
+```bash
 1️⃣ Install Dependencies
 cd frontend
 npm install
+
 2️⃣ Run Frontend
 npm run dev
 Frontend runs at:
 
 http://localhost:5173
-🔐 Default Admin Account
+```
+
+## 🔐 Default Admin Account
 Created via seed script:
 
-Email: admin@crm.com
-Password: admin123
-Role: ADMIN
-⚠️ Change credentials before production use.
+- Email: admin@crm.com
+- Password: admin123
+- Role: ADMIN
+ 
+## 🔌 API Highlights
+### Auth
+| Endpoint       | Method | Description                               |
+| -------------- | ------ | ----------------------------------------- |
+| `/auth/signup` | POST   | Register a new user account               |
+| `/auth/login`  | POST   | Authenticate user and return access token |
 
-🔌 API Highlights
-Auth
-POST /auth/signup
 
-POST /auth/login
+### Leads
+| Endpoint      | Method | Description                                |
+| ------------- | ------ | ------------------------------------------ |
+| `/leads`      | POST   | Create a new lead                          |
+| `/leads`      | GET    | Fetch all leads for the authenticated user |
+| `/leads/{id}` | PATCH  | Update lead status or details by lead ID   |
 
-Leads
-POST /leads
 
-GET /leads
+### AI
+| Endpoint             | Method | Description                                      |
+| -------------------- | ------ | ------------------------------------------------ |
+| `/ai/generate-email` | POST   | Generate an AI-powered outreach email for a lead |
+| `/replies/process`   | POST   | Analyze and process lead replies using AI        |
 
-PATCH /leads/{id}
 
-AI
-POST /ai/generate-email
+### Outreach
+| Endpoint         | Method | Description                             |
+| ---------------- | ------ | --------------------------------------- |
+| `/outreach/send` | POST   | Send automated outreach emails to leads |
 
-POST /replies/process
 
-Outreach
-POST /outreach/send
+### Payments
+| Endpoint          | Method | Description                                         |
+| ----------------- | ------ | --------------------------------------------------- |
+| `/stripe/webhook` | POST   | Handle Stripe payment & subscription webhook events |
 
-Payments
-POST /stripe/webhook
 
-📊 Business Logic Highlights
-AI decides lead intent
+## 📊 Business Logic Highlights
+- AI decides lead intent
 
-Lead status auto-updates
+- Lead status auto-updates
 
-Payment confirmation auto-closes lead
+- Payment confirmation auto-closes lead
 
-Secure role-based access everywhere
+- Secure role-based access everywhere
 
-Fully event-driven design
+- Fully event-driven design
 
-🎯 Learning Outcomes
-Designing AI-powered SaaS systems
+## 🎯 Learning Outcomes
+- Designing AI-powered SaaS systems
 
-FastAPI production architecture
+- FastAPI production architecture
 
-JWT auth & RBAC
+- JWT auth & RBAC
 
-Webhook-driven workflows
+- Webhook-driven workflows
 
-AI integration in real products
+- AI integration in real products
 
-Stripe payment lifecycle
+- Stripe payment lifecycle
 
-React + Redux dashboard systems
+- React + Redux dashboard systems
 
-Full-stack system design thinking
+- Full-stack system design thinking
 
-📌 Future Enhancements
-Multi-tenant SaaS support
+## 📌 Future Enhancements
+- Multi-tenant SaaS support
 
-Background jobs (Celery / Redis)
+- Background jobs (Celery / Redis)
 
-CRM analytics charts
+- CRM analytics charts
 
-Multi-channel outreach (WhatsApp, LinkedIn)
+- Multi-channel outreach (WhatsApp, LinkedIn)
 
-Agent performance scoring
+- Agent performance scoring
 
-Deployment (Docker + Cloud)
+- Deployment (Docker + Cloud)
 
-Email inbox sync (Gmail / Outlook)
+- Email inbox sync (Gmail / Outlook)
