@@ -29,6 +29,8 @@ def register_user(data: SignupRequest, db: Session = Depends(get_db)):
 
     #3. Create user
     new_user = User(
+        username=data.username,
+        agency_name=data.agency_name,
         email=data.email,
         password_hash=hashed_password,
         role="AGENT"  # default role

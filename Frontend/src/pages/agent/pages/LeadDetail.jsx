@@ -18,6 +18,15 @@ function LeadDetails() {
   const [lead, setLead] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const refreshLead = async () => {
+    try {
+      const updatedLead = await apiFetch(`/leads/${id}`);
+      setLead(updatedLead);
+    } catch (err) {
+      console.error("Failed to refresh lead:", err);
+    }
+  };
+
   useEffect(() => {
     apiFetch(`/leads/${id}`)
       .then(setLead)
@@ -34,61 +43,57 @@ function LeadDetails() {
 
       <LeadInfoCard lead={lead} />
 
-       {lead.status === "NEW" && (
-        <EmailOutreach leadId={lead.id} onStatusChange={setLead} />
-       )}
-
       <StatusUpdate lead={lead} onUpdate={setLead} />
-       
-        <h1 className="text-2xl font-bold mb-2">
-        {lead.business_name}
-      </h1>
 
-      <p className="text-slate-600">{lead.email}</p>
-      <p className="text-sm mt-1">
-        Status: <strong>{lead.status}</strong>
-      </p>
+      {lead.status === "NEW" && (
+      <EmailOutreach leadId={lead.id} onStatusChange={setLead} />
+      )}
+  
+
+
+
       {lead.status === "CONTACTED" && (
-  <ReplyIntentSimulator
-    leadId={lead.id}
-    onStatusUpdate={(newStatus) =>
-      setLead({ ...lead, status: newStatus })
-    }
-  />
-)}
-        {/* 🔥 AI Reply Component */}
-   {lead.status === "INTERESTED" && (
-  <div className="bg-slate-50 p-4 rounded">
-    <h3 className="font-semibold">Lead is Interested</h3>
-
-    <GenerateProposal
-      leadId={lead.id}
-      onSuccess={(updatedLead) => setLead(updatedLead)}
-    />
-  </div>
-  )}
- 
- 
-<ProposalStatusCard lead={lead} />
-
- <div className="space-y-4">
-      {lead.status === "INTERESTED" && (
-        <GenerateProposal
+        <ReplyIntentSimulator
           leadId={lead.id}
-          onSuccess={refreshLead}
+          onStatusUpdate={(newStatus) =>
+            setLead({ ...lead, status: newStatus })
+          }
         />
       )}
 
-      {lead.status === "PROPOSAL_SENT" && (
-        <ViewProposalButton leadId={lead.id} />
+        {/* 🔥 AI Reply Component */}
+      {lead.status === "INTERESTED" && (
+          <div className="bg-slate-50 p-4 rounded">
+            <h3 className="font-semibold">Lead is Interested</h3>
+
+            <GenerateProposal
+              leadId={lead.id}
+              onSuccess={(updatedLead) => setLead(updatedLead)}
+            />
+          </div>
       )}
-    </div>     
-
-
-{lead.status === "PROPOSAL_SENT" && (
-  <PayNowButton leadId={lead.id} />
-)} 
  
+ 
+      <ProposalStatusCard lead={lead} />
+
+      <div className="space-y-4">
+          {lead.status === "INTERESTED" && (
+            <GenerateProposal
+              leadId={lead.id}
+              onSuccess={refreshLead}
+            />
+          )}
+
+          {lead.status === "PROPOSAL_SENT" && (
+            <ViewProposalButton leadId={lead.id} />
+          )}
+      </div>     
+
+
+      {lead.status === "PROPOSAL_SENT" && (
+        <PayNowButton leadId={lead.id} />
+      )} 
+      
 
       
   

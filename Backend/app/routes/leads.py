@@ -32,6 +32,7 @@ def create_lead(
 
     new_lead = Lead(
         business_name=lead.business_name,
+        contact_name=lead.contact_name,
         email=lead.email,
         industry=lead.industry,
         city=lead.city,

@@ -33,11 +33,11 @@ const AgentLayout = () => {
                             }
                         >
                             Dashboard
-                        </NavLink>
+            </NavLink>
           </button>
           <button  className="block">
             
-          <NavLink
+            <NavLink
                 to="/agent/leads"
                             className={({ isActive }) =>
                             `transition ${
@@ -46,13 +46,13 @@ const AgentLayout = () => {
                                 : "text-slate-700 hover:text-slate-900"
                             }`
                             }
-                        >
+            >
                             Leads
-                        </NavLink>
+            </NavLink>
           </button>
           <button  className="block">
             
-          <NavLink
+              <NavLink
                 to="/agent/activity"
                             className={({ isActive }) =>
                             `transition ${
@@ -61,13 +61,13 @@ const AgentLayout = () => {
                                 : "text-slate-700 hover:text-slate-900"
                             }`
                             }
-                        >
+              >
                             Activity
-                        </NavLink>
+              </NavLink>
           </button>
           <button  className="block">
             
-          <NavLink
+              <NavLink
                 to="/agent/settings"
                             className={({ isActive }) =>
                             `transition ${
@@ -76,9 +76,9 @@ const AgentLayout = () => {
                                 : "text-slate-700 hover:text-slate-900"
                             }`
                             }
-                        >
+              >
                             Settings
-                        </NavLink>
+              </NavLink>
           </button>
           <button onClick={handleLogout} className="text-red-500">
             Logout

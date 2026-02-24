@@ -8,19 +8,24 @@ client = genai.Client(
 )
 
 
-def generate_ai_email(lead):
+def generate_ai_email(lead, agent):
     prompt = f"""
-You are a sales copywriter.
+        You are a sales copywriter.
 
-Write a short cold email for a digital marketing agency.
+        Write a short cold email for a digital marketing agency.
+        
+        Prospect Name: {lead.contact_name}
+        Business Name: {lead.business_name}
+        Industry: {lead.industry}
+        City: {lead.city}
+           
+        Sender Name: {agent.username}
+        Sender Agency: {agent.agency_name}
+        Keep it professional, friendly, and under 120 words.
+        End with a clear call to action.
+    """
 
-Business Name: {lead.business_name}
-Industry: {lead.industry}
-City: {lead.city}
-
-Keep it professional, friendly, and under 120 words.
-End with a clear call to action.
-"""
+    print(lead.business_name,lead.industry,lead.city) 
 
     try:
         response = client.models.generate_content(
@@ -38,7 +43,8 @@ End with a clear call to action.
         return fallback_email(lead)
 
     text = response.text.strip()
-
+    
+    
     # ---------- SAFE PARSING ----------
     subject = f"Helping {lead.business_name} grow"
     body = text
@@ -62,10 +68,10 @@ def fallback_email(lead):
         "subject": f"Helping {lead.business_name} get more customers",
         "body": f"""Hi,
 
-We help {lead.industry} businesses in {lead.city} attract more customers through digital marketing.
+        We help {lead.industry} businesses in {lead.city} attract more customers through digital marketing.
 
-Would you like to explore how this could work for {lead.business_name}?
+        Would you like to explore how this could work for {lead.business_name}?
 
-Best regards,
-Your Team"""
+        Best regards,
+        Your Team"""
     }

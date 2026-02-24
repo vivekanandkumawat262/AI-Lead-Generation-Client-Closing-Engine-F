@@ -18,22 +18,6 @@ function Leads() {
 
   return (
     <div>
-      {/* <h2 className="text-2xl font-bold mb-4">Lead</h2> */}
-
-      {/* {leads.length === 0 ? (
-        <p>No leads found</p>
-      ) : (
-        <ul>
-            
-          {leads.map((lead) => (
-            <li key={lead.id}>
-             {lead.status} - {lead.city}
-            </li>
-          ))}
-        </ul>
-      )} */}
-
-      {/* <LeadTable leads={leads} /> */}
       <AddLeads/>
     </div>
   );

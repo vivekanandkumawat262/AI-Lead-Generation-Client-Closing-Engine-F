@@ -22,23 +22,30 @@ def generate_email(lead_id: int, db: Session = Depends(get_db),
     if not lead:
         raise HTTPException(status_code=404, detail="Lead not found")
 
-    email_data = generate_ai_email(lead)
+    print(user.username)
+    email_data = generate_ai_email(lead, user)
+    
+    message_log = Message(
+        lead_id=lead.id,
+        sender_id=user.id,
+        subject=email_data["subject"],
+        content=email_data["body"]
+    )
+        
+    db.add(message_log)
+    db.commit()
+    db.refresh(message_log)
+
      # 🔹 Save to EmailLog
     email_log = EmailLog(
-        lead_id=lead.id,
+        message_id=message_log.id,
         subject=email_data["subject"],
         body=email_data["body"]
     )
 
-    message_log = Message(
-        lead_id=lead.id,
-        subject=email_data["subject"],
-        content=email_data["body"]
-    )
-    
-    db.add(message_log)
     db.add(email_log)
     db.commit()
     db.refresh(email_log)
+
 
     return email_data

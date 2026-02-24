@@ -14,7 +14,7 @@ def get_db():
         yield db
     finally:
         db.close()
-
+   
 @router.get("/")
 def list_users(
     db: Session = Depends(get_db),

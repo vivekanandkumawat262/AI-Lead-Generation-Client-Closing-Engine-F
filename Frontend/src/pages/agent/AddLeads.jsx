@@ -10,32 +10,34 @@ function Leads() {
 
   // Load from localStorage first + then API
   useEffect(() => {
+    
+    apiFetch("/leads")
+    .then((data) => {
+      if (Array.isArray(data)) {
+        setLeads(data);
+        localStorage.setItem("leads", JSON.stringify(data));
+      }
+    })
+    .catch((err) => {
+      console.error("Failed to fetch leads:", err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+
     const storedLeads = localStorage.getItem("leads");
 
     if (storedLeads) {
       setLeads(JSON.parse(storedLeads));
     }
 
-    apiFetch("/leads")
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setLeads(data);
-          localStorage.setItem("leads", JSON.stringify(data));
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to fetch leads:", err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
   }, []);
 
   // Save new lead to state + localStorage
   const handleSuccess = (newLead) => {
     setLeads((prev) => {
       const updated = [newLead, ...prev];
-      localStorage.setItem("leads", JSON.stringify(updated));
+      // localStorage.setItem("leads", JSON.stringify(updated));
       return updated;
     });
   };

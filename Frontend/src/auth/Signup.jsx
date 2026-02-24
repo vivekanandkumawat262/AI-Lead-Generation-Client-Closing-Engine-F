@@ -6,6 +6,8 @@ import Modal from "./Model";
 const Signup = ({ onClose = () => {} }) => {
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState("");
+  const [agency_name, setAgency_name] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -21,7 +23,7 @@ const Signup = ({ onClose = () => {} }) => {
     try {
       const res = await axios.post(
         "http://127.0.0.1:8000/auth/register",
-        { email, password }
+        { username,agency_name,email, password }
       );
 
       setMessage(res.data.message || "Account created successfully!");
@@ -52,6 +54,22 @@ const Signup = ({ onClose = () => {} }) => {
       </p>
 
       <form onSubmit={handleSignup} className="space-y-5">
+        <input
+          type="text"
+          placeholder="Username"
+          required
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full rounded-xl border px-4 py-3"
+        />
+        <input
+          type="text"
+          placeholder="Your Agency Name"
+          required
+          value={agency_name}
+          onChange={(e) => setAgency_name(e.target.value)}
+          className="w-full rounded-xl border px-4 py-3"
+        />
         <input
           type="email"
           placeholder="you@example.com"

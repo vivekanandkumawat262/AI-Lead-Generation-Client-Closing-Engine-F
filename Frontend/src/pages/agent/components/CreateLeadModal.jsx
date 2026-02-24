@@ -50,45 +50,52 @@ const CreateLeadModal = ({ onClose, onSuccess }) => {
         <h2 className="text-xl font-bold mb-4">Add New Lead</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="business_name"
-            placeholder="Business Name"
-            required
-            onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2"
-          />
+            <input
+              name="business_name"
+              placeholder="Business Name"
+              required
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            />
+            <input
+              name="contact_name"
+              placeholder="Contact Name"
+              required
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            />
 
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            required
-            onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2"
-          />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            />
 
-          <input
-            name="industry"
-            placeholder="Industry"
-            onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2"
-          />
+            <input
+              name="industry"
+              placeholder="Industry"
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            />
 
-          <input
-            name="city"
-            placeholder="City"
-            onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2"
-          />
+            <input
+              name="city"
+              placeholder="City"
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            />
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <button
-            disabled={loading}
-            className="w-full bg-orange-500 text-white py-2 rounded-lg"
-          >
-            {loading ? "Creating..." : "Create Lead"}
-          </button>
+            <button
+              disabled={loading}
+              className="w-full bg-orange-500 text-white py-2 rounded-lg"
+            >
+              {loading ? "Creating..." : "Create Lead"}
+            </button>
         </form>
       </div>
     </div>

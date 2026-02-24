@@ -2,8 +2,10 @@
 from pydantic import BaseModel, EmailStr
 
 class SignupRequest(BaseModel):
+      username: str
       email: EmailStr
       password: str
+      agency_name: str
 
 class SignupResponse(BaseModel):
     message: str
@@ -17,10 +19,13 @@ class TokenResponse(BaseModel):
     access_token: str
     token_type: str
     role: str
-
+      
 
 class LeadCreate(BaseModel):
     business_name: str
+    
+    contact_name: str
+
     email: EmailStr
     industry: str
     city: str
@@ -28,6 +33,7 @@ class LeadCreate(BaseModel):
 class LeadResponse(BaseModel):
     id: int
     business_name: str
+    contact_name: str
     email: str
     industry: str
     city: str
