@@ -14,7 +14,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 /* Layout */
-import Layout from "./layout";
+import Layout from "./Layout";
 
 /* Public Pages */
 import HomePage from "./pages/public/Home";
