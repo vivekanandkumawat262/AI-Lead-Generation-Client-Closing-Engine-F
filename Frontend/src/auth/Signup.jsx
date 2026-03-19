@@ -22,7 +22,7 @@ const Signup = ({ onClose = () => {} }) => {
 
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/auth/register",
+        "https://ai-lead-generation-client-closing-engine-ni15.onrender.com/auth/register",
         { username,agency_name,email, password }
       );
 
