@@ -24,7 +24,7 @@ def send_outreach(lead_id: int, db: Session = Depends(get_db)):
 
     email = (
         db.query(EmailLog)
-        .filter(EmailLog.lead_id == lead_id)
+        .filter(EmailLog.id == lead_id)
         .order_by(EmailLog.sent_at.desc())
         .first()
     )
