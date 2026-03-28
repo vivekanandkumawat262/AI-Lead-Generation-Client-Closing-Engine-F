@@ -19,7 +19,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://ai-lead-generation-client-closing-engine-ni15.onrender.com/auth/login", {
+      // const res = await axios.post("https://ai-lead-generation-client-closing-engine-ni15.onrender.com/auth/login", {
+      const res = await axios.post("http://127.0.0.1:8000/auth/login", {
         email,
         password,
       });

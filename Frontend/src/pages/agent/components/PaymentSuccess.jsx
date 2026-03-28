@@ -5,7 +5,7 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => navigate("/agent/dashboard"), 2500);
+    setTimeout(() => navigate("/agent/leads"), 2500);
   }, [navigate]);
 
   return (
