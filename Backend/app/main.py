@@ -8,7 +8,7 @@ from .routes import users
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import webhooks
 
-       
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="CRM AutoPilot")

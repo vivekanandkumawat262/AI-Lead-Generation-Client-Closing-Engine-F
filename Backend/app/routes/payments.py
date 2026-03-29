@@ -29,7 +29,7 @@ def get_db():
 def create_payment_link(
     lead_id: int,
     db: Session = Depends(get_db),
-    user=Depends(require_role([Role.ADMIN,Role.AGENT]))
+    user=Depends(require_role([Role.ADMIN]))
 ):
     lead = db.query(Lead).filter(Lead.id == lead_id).first()
     if not lead:
@@ -55,10 +55,10 @@ def create_payment_link(
                 },
                 "quantity": 1,
             }],
-            success_url="http://localhost:5173/payment-success",
-            cancel_url="http://localhost:5173/payment-cancel",
+            success_url="http://localhost:3000/payment-success",
+            cancel_url="http://localhost:3000/payment-cancel",
             metadata={"lead_id": str(lead.id)}
-        )      
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -134,7 +134,7 @@ def get_payment_status(
         "amount": payment.amount,
         "payment_intent": payment.stripe_payment_intent
     }
-     
+
 
 # 🔹 Get All Payments (ADMIN only)
 @router.get("/")
