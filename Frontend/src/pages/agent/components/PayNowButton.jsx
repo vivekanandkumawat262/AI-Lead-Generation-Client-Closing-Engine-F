@@ -13,9 +13,7 @@ const PayNowButton = ({ leadId, onSuccess }) => {
       const res = await apiFetch(`/payments/create/${leadId}`, {
         method: "POST",
       });
-      
-      console.log(res.payment_url)
-      console.log(res.lead_status)
+
       if (!res?.payment_url) {
         throw new Error("Invalid payment link response");
       }

@@ -7,8 +7,8 @@ from .routes import leads, ai, outreach, replies, proposals, payments, auth, ema
 from .routes import users
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import webhooks
-                    
 
+       
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="CRM AutoPilot")
@@ -28,14 +28,52 @@ app.include_router(webhooks.router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*","http://localhost:5173","https://ai-lead-generation-client-closing-e.vercel.app"],
+    allow_origins=["http://localhost:5173","https://ai-lead-generation-client-closing-e.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)       
+)
 
 @app.get("/")
 def root():
     return {"message": "CRM AutoPilot Backend Running"}
 
- 
+
+
+# from fastapi import FastAPI
+
+# app = FastAPI()
+
+# @app.get("/")
+# def root():
+#     return {"message": "Server OK"}
+
+
+
+# from fastapi import FastAPI
+# from .database import Base, engine
+
+# Base.metadata.create_all(bind=engine)
+
+# app = FastAPI()
+
+# @app.get("/")
+# def root():
+#     return {"message": "DB OK"}
+
+
+
+
+
+# from fastapi import FastAPI
+# from .database import Base, engine
+# from .routes import leads
+
+# Base.metadata.create_all(bind=engine)
+
+# app = FastAPI()
+# app.include_router(leads.router)
+
+# @app.get("/")
+# def root():
+#     return {"message": "Leads OK"}

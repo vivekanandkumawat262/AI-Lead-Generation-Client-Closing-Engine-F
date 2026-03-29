@@ -26,6 +26,8 @@ class LeadStatus(str, Enum):
     INTERESTED = "INTERESTED"
     PROPOSAL_SENT = "PROPOSAL_SENT"
     PAID = "PAID"
+    CLOSED = "CLOSED"
+    NOT_INTERESTED = "NOT_INTERESTED" 
 
 
 # app/models.py (continue)

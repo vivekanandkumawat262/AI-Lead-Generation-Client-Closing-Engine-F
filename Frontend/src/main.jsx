@@ -40,7 +40,8 @@ import Pricing from "./components/Pricing/Pricing";
 import AuthLayout from "./auth/AuthLayout";
 import AgentLayout from "./pages/agent/Layout/AgentLayout";
 import Github, { githubInfoLoader } from "./components/Github/Github";
-import PaymentSuccess from "./pages/agent/components/PaymentSuccess";
+
+import PaymentSuccess from "./pages/agent/components/PaymentSuccess"
 
 const router = createBrowserRouter([
   {
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
           { path: "settings", element: <Settings /> },
         ],
       },
-      { path:"/payment-success", element:<PaymentSuccess />}
+      { path: "/payment-success", element: <PaymentSuccess/> },
     ],
   },
 ]);

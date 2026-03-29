@@ -14,18 +14,18 @@ endpoint_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
 async def stripe_webhook(request: Request):
     payload = await request.body()
     sig_header = request.headers.get("stripe-signature")
-    print("🔥 HIT /stripe/webhook")
+
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid signature")
-    print("type2",event["type"])
+
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
         lead_id = session["metadata"]["lead_id"]
-          
+
         db = SessionLocal()
         lead = db.query(Lead).filter(Lead.id == lead_id).first()
 
