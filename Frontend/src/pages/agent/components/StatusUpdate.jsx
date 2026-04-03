@@ -1,4 +1,4 @@
-import { apiFetch } from "../../../api/api";
+import { apiFetch } from "../../../app/api";
 
 const statuses = [
   "NEW",

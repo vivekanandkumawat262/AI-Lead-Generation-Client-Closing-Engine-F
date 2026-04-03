@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { apiFetch } from "../../../api/api";
+import { apiFetch } from "../../../app/api";
 
 import LeadActionsHeader from "../components/LeadActionsHeader";
 import LeadInfoCard from "../components/LeadInfoCard";

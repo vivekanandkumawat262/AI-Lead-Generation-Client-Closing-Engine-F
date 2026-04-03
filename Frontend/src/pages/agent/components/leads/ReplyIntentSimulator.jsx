@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { apiFetch } from "../../../../api/api";
+import { apiFetch } from "../../../../app/api";
 
 const intentColors = {
   INTERESTED: "bg-green-100 text-green-700",

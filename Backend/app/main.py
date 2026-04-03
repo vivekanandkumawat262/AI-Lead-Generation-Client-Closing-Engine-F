@@ -7,7 +7,7 @@ from .routes import leads, ai, outreach, replies, proposals, payments, auth, ema
 from .routes import users
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import webhooks
-
+         
 
 Base.metadata.create_all(bind=engine)
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetch } from "../../../api/api";
+import { apiFetch } from "../../../app/api";
 import LeadTable from "../components/LeadTable";
 import AddLeads from "../AddLeads";
 function Leads() {
