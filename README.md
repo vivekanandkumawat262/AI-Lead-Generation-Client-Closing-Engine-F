@@ -3,10 +3,10 @@
 An **AI-powered CRM and sales automation platform** that automates the entire lead lifecycle — from **lead creation and AI cold outreach** to **reply intent detection, proposal generation, and payment tracking**.
 
 The system is built as a **full-stack SaaS-style application** with a **FastAPI backend** and a **React frontend**, designed to simulate a real-world **AI sales agent + CRM autopilot**.
-
+```
 backend: https://ai-lead-generation-client-closing-engine-mqqd.onrender.com
 frontend: https://ai-lead-generation-client-closing-e-gilt.vercel.app
-
+```
 ---
 
 ## 🚀 Project Overview
