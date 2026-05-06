@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { apiFetch } from "../../../api/api";
+=======
+import { apiFetch } from "../../../app/api";
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
 import LeadActionsHeader from "../components/LeadActionsHeader";
 import LeadInfoCard from "../components/LeadInfoCard";
@@ -27,6 +31,46 @@ function LeadDetails() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const [closing, setClosing] = useState(false);
+
+  async function handleCloseDeal() {
+    setClosing(true);
+    try {
+      const updated = await apiFetch(`/leads/${id}`, {
+        method: "PATCH",
+        body: { status: "CLOSED" },
+      });
+
+      setLead(updated);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setClosing(false);
+    }
+  }
+
+  const [marking, setMarking] = useState(false);
+
+  async function handleNotInterested() {
+    setMarking(true);
+    try {
+      const updated = await apiFetch(`/leads/${id}`, {
+        method: "PATCH",
+        body: { status: "NOT_INTERESTED" },
+      });
+
+      setLead(updated);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to update status");
+    } finally {
+      setMarking(false);
+    }
+  }
+
+>>>>>>> b87aec80181b986af2a46060389d487668364994
   useEffect(() => {
     apiFetch(`/leads/${id}`)
       .then(setLead)
@@ -46,11 +90,16 @@ function LeadDetails() {
       <StatusUpdate lead={lead} onUpdate={setLead} />
 
       {lead.status === "NEW" && (
+<<<<<<< HEAD
       <EmailOutreach leadId={lead.id} onStatusChange={setLead} />
       )}
   
 
 
+=======
+        <EmailOutreach leadId={lead.id} onStatusChange={setLead} />
+      )}
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
       {lead.status === "CONTACTED" && (
         <ReplyIntentSimulator
@@ -61,6 +110,7 @@ function LeadDetails() {
         />
       )}
 
+<<<<<<< HEAD
         {/* 🔥 AI Reply Component */}
       {lead.status === "INTERESTED" && (
           <div className="bg-slate-50 p-4 rounded">
@@ -103,20 +153,92 @@ function LeadDetails() {
 
 
 
+=======
+      {/* 🔥 AI Reply Component */}
+      {lead.status === "INTERESTED" && (
+        <div className="bg-slate-50 p-4 rounded">
+          <h3 className="font-semibold">Lead is Interested</h3>
+
+          <GenerateProposal
+            leadId={lead.id}
+            onSuccess={(updatedLead) => setLead(updatedLead)}
+          />
+        </div>
+      )}
+
+      <ProposalStatusCard lead={lead} />
+
+      <div className="space-y-4">
+        {lead.status === "INTERESTED" && (
+          <GenerateProposal leadId={lead.id} onSuccess={refreshLead} />
+        )}
+
+        {lead.status === "PROPOSAL_SENT" && (
+          <ViewProposalButton leadId={lead.id} />
+        )}
+      </div>
+
+      {lead.status === "PROPOSAL_SENT" && <PayNowButton leadId={lead.id} />}
+
+      <button
+        onClick={handleCloseDeal}
+        disabled={closing}
+        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+      >
+        {closing ? "Closing..." : "Close Deal ✅"}
+      </button>
+
+      {lead.status === "CLOSED" && (
+        <div className="bg-blue-50 p-4 rounded">
+          <h3 className="font-semibold text-blue-700">
+            ✅ Client Successfully Closed
+          </h3>
+        </div>
+      )}
+
+      {["CONTACTED", "INTERESTED", "PROPOSAL_SENT"].includes(lead.status) && (
+        <div className="bg-red-50 p-4 rounded space-y-3">
+          <h3 className="font-semibold text-red-700">Client not interested?</h3>
+
+          <button
+            onClick={handleNotInterested}
+            disabled={marking}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            {marking ? "Updating..." : "Mark as Not Interested ❌"}
+          </button>
+        </div>
+      )}
+
+      {lead.status === "NOT_INTERESTED" && (
+        <div className="bg-red-100 p-4 rounded">
+          <h3 className="font-semibold text-red-700">
+            ❌ Client Not Interested
+          </h3>
+          <p className="text-sm text-red-600">
+            This lead has been marked as lost.
+          </p>
+        </div>
+      )}
+>>>>>>> b87aec80181b986af2a46060389d487668364994
     </div>
   );
 }
 
 export default LeadDetails;
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 // import { useParams, useNavigate } from "react-router-dom";
 // import { useEffect, useState } from "react";
 // import { apiFetch } from "../../../api/api";
 
 // function LeadDetails() {
+<<<<<<< HEAD
   
 //   const [emailDraft, setEmailDraft] = useState(null);
 //   const [sending, setSending] = useState(false);
@@ -125,6 +247,16 @@ export default LeadDetails;
 //   const { id } = useParams();        // 👈 gets lead id from URL
 //   const navigate = useNavigate();
   
+=======
+
+//   const [emailDraft, setEmailDraft] = useState(null);
+//   const [sending, setSending] = useState(false);
+//   const [generating, setGenerating] = useState(false);
+
+//   const { id } = useParams();        // 👈 gets lead id from URL
+//   const navigate = useNavigate();
+
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 //   const [lead, setLead] = useState(null);
 //   const [loading, setLoading] = useState(true);
 
@@ -140,7 +272,11 @@ export default LeadDetails;
 
 //   return (
 //     <div className="max-w-4xl mx-auto space-y-6">
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 //       {/* Header */}
 //       <div className="flex justify-between items-center">
 //         <h2 className="text-2xl font-bold">

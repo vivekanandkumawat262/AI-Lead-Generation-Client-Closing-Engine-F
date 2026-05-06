@@ -1,5 +1,9 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { apiFetch } from "../../../api/api";
+=======
+import { apiFetch } from "../../../app/api";
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
 
 const EmailOutreach = ({ leadId, onStatusChange }) => {

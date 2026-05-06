@@ -7,7 +7,11 @@ from .routes import leads, ai, outreach, replies, proposals, payments, auth, ema
 from .routes import users
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import webhooks
+<<<<<<< HEAD
 
+=======
+         
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
 Base.metadata.create_all(bind=engine)
 
@@ -28,7 +32,11 @@ app.include_router(webhooks.router)
 
 app.add_middleware(
     CORSMiddleware,
+<<<<<<< HEAD
     allow_origins=["*","http://localhost:5173"],
+=======
+    allow_origins=["http://localhost:5173","https://ai-lead-generation-client-closing-e.vercel.app"],
+>>>>>>> b87aec80181b986af2a46060389d487668364994
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -76,4 +84,8 @@ def root():
 
 # @app.get("/")
 # def root():
+<<<<<<< HEAD
 #     return {"message": "Leads OK"}
+=======
+#     return {"message": "Leads OK"}
+>>>>>>> b87aec80181b986af2a46060389d487668364994

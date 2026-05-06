@@ -14,7 +14,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 /* Layout */
+<<<<<<< HEAD
 import Layout from "./layout";
+=======
+import Layout from "./Layout";
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
 /* Public Pages */
 import HomePage from "./pages/public/Home";
@@ -41,6 +45,11 @@ import AuthLayout from "./auth/AuthLayout";
 import AgentLayout from "./pages/agent/Layout/AgentLayout";
 import Github, { githubInfoLoader } from "./components/Github/Github";
 
+<<<<<<< HEAD
+=======
+import PaymentSuccess from "./pages/agent/components/PaymentSuccess"
+
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 const router = createBrowserRouter([
   {
     path: "/",
@@ -99,7 +108,12 @@ const router = createBrowserRouter([
           { path: "activity", element: <Activity /> },
           { path: "settings", element: <Settings /> },
         ],
+<<<<<<< HEAD
       }
+=======
+      },
+      { path: "/payment-success", element: <PaymentSuccess/> },
+>>>>>>> b87aec80181b986af2a46060389d487668364994
     ],
   },
 ]);

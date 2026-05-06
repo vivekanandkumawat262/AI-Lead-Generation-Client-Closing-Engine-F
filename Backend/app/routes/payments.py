@@ -29,7 +29,11 @@ def get_db():
 def create_payment_link(
     lead_id: int,
     db: Session = Depends(get_db),
+<<<<<<< HEAD
     user=Depends(require_role([Role.ADMIN]))
+=======
+    user=Depends(require_role([Role.ADMIN,Role.AGENT]))
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 ):
     lead = db.query(Lead).filter(Lead.id == lead_id).first()
     if not lead:
@@ -55,8 +59,13 @@ def create_payment_link(
                 },
                 "quantity": 1,
             }],
+<<<<<<< HEAD
             success_url="http://localhost:3000/payment-success",
             cancel_url="http://localhost:3000/payment-cancel",
+=======
+            success_url="http://localhost:5173/payment-success",
+            cancel_url="http://localhost:5173/payment-cancel",
+>>>>>>> b87aec80181b986af2a46060389d487668364994
             metadata={"lead_id": str(lead.id)}
         )
     except Exception as e:
@@ -66,7 +75,11 @@ def create_payment_link(
         "payment_url": session.url,
         "lead_status": lead.status
     }
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> b87aec80181b986af2a46060389d487668364994
 
 # 🔹 Stripe Webhook (called by Stripe)
 @router.post("/webhook")

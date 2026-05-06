@@ -19,6 +19,10 @@ const Login = () => {
     setLoading(true);
 
     try {
+<<<<<<< HEAD
+=======
+      // const res = await axios.post("https://ai-lead-generation-client-closing-engine-ni15.onrender.com/auth/login", {
+>>>>>>> b87aec80181b986af2a46060389d487668364994
       const res = await axios.post("http://127.0.0.1:8000/auth/login", {
         email,
         password,
@@ -108,6 +112,7 @@ const Login = () => {
 
 export default Login;
 
+<<<<<<< HEAD
 // import axios from "axios";
 // import { useEffect, useState } from "react";
 // import { useNavigate, Link } from "react-router-dom";
@@ -339,3 +344,6 @@ export default Login;
 //     </div>
 //   );
 // }
+=======
+ 
+>>>>>>> b87aec80181b986af2a46060389d487668364994
