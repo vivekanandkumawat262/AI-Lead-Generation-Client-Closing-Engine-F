@@ -4,6 +4,9 @@ An **AI-powered CRM and sales automation platform** that automates the entire le
 
 The system is built as a **full-stack SaaS-style application** with a **FastAPI backend** and a **React frontend**, designed to simulate a real-world **AI sales agent + CRM autopilot**.
 
+backend: https://ai-lead-generation-client-closing-engine-mqqd.onrender.com
+frontend: https://ai-lead-generation-client-closing-e-gilt.vercel.app
+
 ---
 
 ## 🚀 Project Overview
